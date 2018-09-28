@@ -200,8 +200,10 @@ class AuditLoggingParser {
         writer.writeEndElement();
     }
 
-    private boolean shouldWrite(ModelNode subsystem) {
-        return subsystem.hasDefined(AGGREGATE_SECURITY_EVENT_LISTENER) || subsystem.hasDefined(FILE_AUDIT_LOG) || subsystem.hasDefined(SYSLOG_AUDIT_LOG);
-    }
+   private boolean shouldWrite(ModelNode subsystem) {
+      return subsystem.hasDefined(AGGREGATE_SECURITY_EVENT_LISTENER) || subsystem.hasDefined(FILE_AUDIT_LOG)
+            || subsystem.hasDefined(PERIODIC_ROTATING_FILE_AUDIT_LOG) || subsystem.hasDefined(SIZE_ROTATING_FILE_AUDIT_LOG)
+            || subsystem.hasDefined(SYSLOG_AUDIT_LOG);
+   }
 
 }
